@@ -1,0 +1,245 @@
+/* ---------- Global Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.app-body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #121212;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
+
+a {
+  color: #1db954; /* Spotify green */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #1ed760;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: #181818;
+  padding: 1rem 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1db954;
+}
+
+/* ---------- Search Bar ---------- */
+.search-bar input[type="search"],
+.search-form input[type="text"] {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 25px;
+  width: 220px;
+  outline: none;
+}
+
+.search-bar button,
+.search-form button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 25px;
+  background: #1db954;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.search-bar button:hover,
+.search-form button:hover {
+  background: #1ed760;
+}
+
+/* ---------- Page Titles ---------- */
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ---------- Search Results ---------- */
+.results-count {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.results-list {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  background: #1e1e1e;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+}
+
+.result-artwork {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.result-title {
+  font-weight: bold;
+}
+
+.btn-view {
+  margin-left: auto;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: #333;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.btn-view:hover {
+  background: #1db954;
+}
+
+/* 🎵 Song Detail Page */
+.song-detail-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Current Song Section */
+.current-song {
+  background: #fff;
+}
+.song-artwork {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.song-meta .song-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+.song-meta .song-artist {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.song-meta .song-album {
+  font-size: 0.95rem;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.3rem;
+}
+
+/* Similar Songs */
+.similar-song-item {
+  background: #fff;
+  transition: background 0.2s ease;
+}
+.similar-song-item:hover {
+  background: #f9f9f9;
+}
+.similar-artwork {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* More From Same Artist */
+.more-from {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.artist-section {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+}
+.artist-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.more-item {
+  background: #fff;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.more-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.more-artwork {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.more-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+
+.footer {
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+  margin: 0.2rem 0;
+  color: #ddd;
+}
+
+.footer p.small {
+  color: #aaa;
+}
+
+.social-links {
+  margin-top: 0.5rem;
+}
+
+.social-link {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* makes white icons if they are black */
+}

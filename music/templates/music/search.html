@@ -1,23 +1,32 @@
-<h2>Search Songs</h2>
+{% extends "base.html" %}
 
-<form method="get" action="{% url 'search' %}">
-    <input type="text" name="q" value="{{ query }}" placeholder="Search by song or artist">
-    <button type="submit">Search</button>
-</form>
+{% block content %}
+<div class="search-page">
+    <h2 class="page-title">Search Songs</h2>
 
-{% if query %}
-  <h3>Results for "{{ query }}"</h3>
-  {% if results %}
-    <ul>
-    {% for s in results %}
-      <li>
-        <img src="{{ s.artwork_url }}" width="50">
-        {{ s.track_name }} - {{ s.artist_name }}
-        <a href="{% url 'song_detail' s.track_id %}">View</a>
-      </li>
-    {% endfor %}
-    </ul>
-  {% else %}
-    <p>No results found.</p>
-  {% endif %}
-{% endif %}
+    <form method="get" action="{% url 'search' %}" class="search-form">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search by song or artist" class="form-control search-input">
+        <button type="submit" class="btn btn-dark mt-2">Search</button>
+    </form>
+
+    {% if query %}
+      <h3 class="results-header">{{ results|length }} Results for "{{ query }}"</h3>
+      {% if results %}
+        <ul class="search-results list-unstyled">
+        {% for s in results %}
+          <li class="search-result-item d-flex align-items-center border rounded p-2 mb-2">
+            <img src="{{ s.artwork_url }}" class="result-artwork me-3" alt="{{ s.track_name }}">
+            <div class="result-info flex-grow-1">
+              <p class="mb-0 fw-bold">{{ s.track_name }}</p>
+              <p class="mb-0 text-muted">{{ s.artist_name }}</p>
+            </div>
+            <a href="{% url 'song_detail' s.track_id %}" class="btn btn-outline-dark btn-sm">View</a>
+          </li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted">No results found.</p>
+      {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
