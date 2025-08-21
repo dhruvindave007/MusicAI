@@ -1,0 +1,23 @@
+<h2>Search Songs</h2>
+
+<form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search by song or artist">
+    <button type="submit">Search</button>
+</form>
+
+{% if query %}
+  <h3>Results for "{{ query }}"</h3>
+  {% if results %}
+    <ul>
+    {% for s in results %}
+      <li>
+        <img src="{{ s.artwork_url }}" width="50">
+        {{ s.track_name }} - {{ s.artist_name }}
+        <a href="{% url 'song_detail' s.track_id %}">View</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+{% endif %}

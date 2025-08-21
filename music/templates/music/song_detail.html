@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto p-6">
+  <!-- Current Song Section -->
+  <div class="flex items-center space-x-6 mb-8">
+    <img src="{{ song.artwork_url }}" alt="{{ song.track_name }}" class="w-40 h-40 rounded-lg shadow-lg">
+    <div>
+      <h1 class="text-3xl font-bold">{{ song.track_name }}</h1>
+      <p class="text-lg text-gray-600">{{ song.artist_name }}</p>
+      <p class="text-sm text-gray-500">{{ song.album_name }} • {{ song.year }}</p>
+      <div class="mt-4">
+        <iframe src="https://open.spotify.com/embed/track/{{ song.track_id }}"
+                width="300" height="80" frameborder="0"
+                allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Similar Songs Section -->
+  <h2 class="text-xl font-semibold mt-6 mb-2">Similar Songs</h2>
+  <ul class="space-y-3">
+    {% for s in similar_songs %}
+      <li class="p-3 border rounded-lg hover:bg-gray-100 transition">
+        <a href="{% url 'song_detail' s.track_id %}" class="flex items-center space-x-3">
+          <img src="{{ s.artwork_url }}" alt="{{ s.track_name }}" class="w-12 h-12 rounded shadow">
+          <div>
+            <p class="font-medium">{{ s.track_name }}</p>
+            <p class="text-sm text-gray-600">{{ s.artist_name }}</p>
+            {% if s.match_pct %}
+              <p class="text-xs text-green-600">{{ s.match_pct }}% match</p>
+            {% endif %}
+          </div>
+        </a>
+      </li>
+    {% empty %}
+      <li class="text-gray-500">No similar songs found.</li>
+    {% endfor %}
+  </ul>
+
+  <!-- More From Same Artist Section -->
+  <h2 class="text-xl font-semibold mt-8 mb-2">More from Same Artist</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {% for artist, tracks in more_from.items %}
+      <div class="col-span-full">
+        <h3 class="text-lg font-medium mt-4 mb-2">{{ artist }}</h3>
+      </div>
+      {% for t in tracks %}
+        <a href="{% url 'song_detail' t.track_id %}" class="block p-2 border rounded-lg hover:bg-gray-100 transition">
+          <img src="{{ t.artwork_url }}" alt="{{ t.track_name }}" class="w-full h-32 object-cover rounded">
+          <p class="mt-2 font-medium text-sm truncate">{{ t.track_name }}</p>
+        </a>
+      {% endfor %}
+    {% empty %}
+      <p class="text-gray-500">No other tracks found for this artist.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
