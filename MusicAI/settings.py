@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-um9+s^po#17x_whxn2k@nq$u5g(rra@pjmg_%ht8v3m*h#a1uw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -76,12 +76,8 @@ WSGI_APPLICATION = 'MusicAI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',  #pgAdmin DB name
-        'USER': 'postgres',  #PostgreSQL username
-        'PASSWORD': 'Dhruvin@123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432', 
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
