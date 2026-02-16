@@ -1,8 +1,8 @@
-# 🎵 MusicAI - Intelligent Music Recommendation System
+#  MusicAI - Intelligent Music Recommendation System
 
 A Django-based music recommendation web application that finds similar songs using advanced audio feature analysis and machine learning.
 
-## 🌟 Features
+##  Features
 
 - **Smart Song Search**: Search for tracks by song name, artist, or album
 - **Similar Song Discovery**: Find songs with similar audio characteristics using hybrid similarity (cosine + euclidean)
@@ -11,7 +11,7 @@ A Django-based music recommendation web application that finds similar songs usi
 - **Audio Feature Analysis**: Leverages 10 audio features including danceability, energy, valence, tempo, and more
 - **Machine Learning Models**: KNN + K-Means clustering for intelligent recommendations
 
-## 📊 How It Works
+##  How It Works
 
 ### Audio Features Used
 - **Danceability**: How suitable the track is for dancing
@@ -38,7 +38,7 @@ A Django-based music recommendation web application that finds similar songs usi
 - **Same-mood Clustering**: ~6 mood clusters (Happy/High Energy, Warm/Relaxed, etc.)
 - No deep learning required - fast and efficient
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.10 or higher
@@ -136,7 +136,7 @@ MusicApp/
     └── style.css
 ```
 
-## 🎯 Usage
+##  Usage
 
 ### Search for Songs
 1. Go to the home page
@@ -181,7 +181,7 @@ python manage.py train_recommender \
    python manage.py train_recommender --csv music/data/your_dataset.csv
    ```
 
-## 🧪 Testing
+##  Testing
 
 Run accuracy evaluation tests:
 ```bash
@@ -203,7 +203,7 @@ Edit `MusicAI/settings.py` to customize:
 - Allowed hosts
 - Debug mode
 
-## 📦 Dependencies
+##  Dependencies
 
 Core packages:
 - **Django 5.2.4**: Web framework
@@ -214,7 +214,7 @@ Core packages:
 
 See `requirements.txt` for complete list.
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### "ModuleNotFoundError: No module named 'pandas'"
 - Ensure virtual environment is activated
@@ -233,7 +233,7 @@ See `requirements.txt` for complete list.
 - Try partial names or alternative spellings
 - Check if CSV loaded correctly
 
-## 🚀 Deployment
+##  Deployment
 
 For production deployment:
 
@@ -244,11 +244,11 @@ For production deployment:
 5. Use production WSGI server (Gunicorn/uWSGI)
 6. Configure SECRET_KEY via environment variable
 
-## 📝 License
+##  License
 
 This project is for educational purposes.
 
-## 👤 Author
+##  Author
 
 **Dhruvin Dave**
 - GitHub: [@dhruvindave007](https://github.com/dhruvindave007)
