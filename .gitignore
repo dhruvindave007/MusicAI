@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/static/
+/media/
+*.pot
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Backup files
+*.bak
+*.tmp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project specific
+# Note: Large datasets and trained models should typically be in .gitignore
+# but for this project, we'll include them for easy setup
+# Uncomment below if your dataset is very large (>100MB)
+# music/data/*.csv
+# music/artifacts/*.joblib
+# music/artifacts/*.parquet
