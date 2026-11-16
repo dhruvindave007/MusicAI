@@ -9,6 +9,8 @@
         <button type="submit" class="btn btn-dark mt-2">Search</button>
     </form>
 
+    {% if error %}<div class="alert alert-warning mt-3">{{ error }}</div>{% endif %}
+
     {% if query %}
       <h3 class="results-header">{{ results|length }} Results for "{{ query }}"</h3>
       {% if results %}

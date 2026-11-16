@@ -1,45 +1,54 @@
-# views.py
-import pandas as pd
+import logging
+
+from django.http import Http404
 from django.shortcuts import render
-from . import utils
 
-# Load CSV once (stick with your existing file)
-df = pd.read_csv("music/data/spotify_tracks.csv")
+from .recommender import get_engine
 
-def song_detail(request, track_id):
-    # Validate the song exists
-    if track_id not in df['track_id'].values:
-        return render(request, "not_found.html", {"track_id": track_id})
+logger = logging.getLogger(__name__)
 
-    # Current song
-    row = df[df['track_id'] == track_id].iloc[0]
-
-    # Similar Songs (across dataset) — hybrid similarity
-    similar_songs = utils.get_similar_songs(df, track_id, top_n=10)
-
-    # More from the Artist(s)
-    more_from = utils.get_more_from_artists(df, track_id, top_n_per_artist=5)
-
-    return render(request, "music/song_detail.html", {
-        "song": row.to_dict(),
-        "similar_songs": similar_songs,
-        "more_from": more_from,     # dict: { artist -> [tracks...] }
-    })
+SEARCH_LIMIT = 50
 
 
-def search(request):
-    q = request.GET.get('q', '').strip()
-    results = []
-    if q:
-        mask = (
-            df['track_name'].fillna('').str.contains(q, case=False, na=False) |
-            df['artist_name'].fillna('').str.contains(q, case=False, na=False) |
-            df.get('album_name', '').fillna('').str.contains(q, case=False, na=False)
-        )
-        results = df[mask].to_dict(orient='records')
+def _engine_or_none():
+    try:
+        return get_engine()
+    except FileNotFoundError:
+        logger.error("Recommender artifacts missing; run `python manage.py train_recommender`.")
+        return None
 
-    return render(request, 'music/search.html', {'query': q, 'results': results})
+
+def _unavailable(request):
+    return render(request, "music/search.html",
+                  {"query": "", "results": [], "error": "Recommender is not trained yet."},
+                  status=503)
 
 
 def index(request):
-    return render(request, 'music/search.html', {'query': '', 'results': []})
+    return render(request, "music/search.html", {"query": "", "results": []})
+
+
+def search(request):
+    q = request.GET.get("q", "").strip()
+    engine = _engine_or_none()
+    if engine is None:
+        return _unavailable(request)
+    results = engine.search(q, limit=SEARCH_LIMIT) if q else []
+    return render(request, "music/search.html", {"query": q, "results": results})
+
+
+def song_detail(request, track_id):
+    engine = _engine_or_none()
+    if engine is None:
+        return _unavailable(request)
+    song = engine.get_track(track_id)
+    if song is None:
+        raise Http404("Unknown track")
+    same_mood, mood = engine.recommend_same_mood(track_id, top_n=6)
+    return render(request, "music/song_detail.html", {
+        "song": song,
+        "similar_songs": engine.recommend_similar(track_id, top_n=10),
+        "same_mood": same_mood,
+        "mood": mood,
+        "more_from": engine.more_from_artists(track_id, top_n_per_artist=5),
+    })

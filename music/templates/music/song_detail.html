@@ -39,6 +39,17 @@
     {% endfor %}
   </ul>
 
+  {% if mood %}
+  <h2 class="section-title">Same Mood: {{ mood }}</h2>
+  <ul class="list-unstyled">
+    {% for s in same_mood %}
+      <li class="mb-2">
+        <a href="{% url 'song_detail' s.track_id %}" class="text-decoration-none text-dark">{{ s.track_name }} <span class="text-muted small">{{ s.artist_name }}</span></a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
   <!-- More From Same Artist Section -->
   <h2 class="section-title">More from Same Artist</h2>
   <div class="more-from grid">
