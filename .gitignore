@@ -35,7 +35,7 @@ venv.bak/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-/static/
+/staticfiles/
 /media/
 *.pot
 
@@ -74,9 +74,5 @@ Thumbs.db
 .DS_Store
 
 # Project specific
-# Note: Large datasets and trained models should typically be in .gitignore
-# but for this project, we'll include them for easy setup
-# Uncomment below if your dataset is very large (>100MB)
-# music/data/*.csv
-# music/artifacts/*.joblib
-# music/artifacts/*.parquet
+# Raw dataset (~20MB) and trained artifacts (~7MB) are small enough to track.
+# Regenerate artifacts with: python manage.py train_recommender
