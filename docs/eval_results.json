@@ -1,0 +1,97 @@
+{
+  "neighbors": {
+    "k": 10,
+    "n_queries": 2000,
+    "catalogue_size": 43998,
+    "seed": 0,
+    "knn": {
+      "artist_hit_rate": 0.5645,
+      "language_precision": 0.441,
+      "intra_list_diversity": 0.0617541698541597,
+      "artist_diversity": 0.67715,
+      "catalogue_coverage": 0.3561070957770808
+    },
+    "random": {
+      "artist_hit_rate": 0.1645,
+      "language_precision": 0.23265,
+      "intra_list_diversity": 0.9867752901397115,
+      "artist_diversity": 0.9217000000000001,
+      "catalogue_coverage": 0.3639710895949816
+    },
+    "popularity": {
+      "artist_hit_rate": 0.0115,
+      "language_precision": 0.3275,
+      "intra_list_diversity": 0.7838037373780508,
+      "artist_diversity": 0.5999999999999998,
+      "catalogue_coverage": 0.00022728305832083275
+    }
+  },
+  "kmeans": [
+    {
+      "k": 2,
+      "silhouette": 0.2730178061308593,
+      "davies_bouldin": 1.4977250312226853,
+      "inertia": 350953.23899263
+    },
+    {
+      "k": 3,
+      "silhouette": 0.2657740863246045,
+      "davies_bouldin": 1.7840856135295153,
+      "inertia": 322274.4220341546
+    },
+    {
+      "k": 4,
+      "silhouette": 0.21684279844212642,
+      "davies_bouldin": 1.7771755674351888,
+      "inertia": 306827.6325431887
+    },
+    {
+      "k": 5,
+      "silhouette": 0.21570439770060257,
+      "davies_bouldin": 1.4552879300706862,
+      "inertia": 267914.9565682589
+    },
+    {
+      "k": 6,
+      "silhouette": 0.22082979199695932,
+      "davies_bouldin": 1.419282729692613,
+      "inertia": 253778.56419917784
+    },
+    {
+      "k": 7,
+      "silhouette": 0.1945065865391163,
+      "davies_bouldin": 1.457916300744457,
+      "inertia": 240935.8657725138
+    },
+    {
+      "k": 8,
+      "silhouette": 0.18134711426613181,
+      "davies_bouldin": 1.4199635413989844,
+      "inertia": 193378.2063612244
+    },
+    {
+      "k": 9,
+      "silhouette": 0.187239392313721,
+      "davies_bouldin": 1.3551108989941627,
+      "inertia": 181392.3642915682
+    },
+    {
+      "k": 10,
+      "silhouette": 0.16875599951142864,
+      "davies_bouldin": 1.4467886914337935,
+      "inertia": 176461.6266770654
+    },
+    {
+      "k": 11,
+      "silhouette": 0.16199506666614652,
+      "davies_bouldin": 1.4472289087929875,
+      "inertia": 169527.65171412396
+    },
+    {
+      "k": 12,
+      "silhouette": 0.165595005400572,
+      "davies_bouldin": 1.3745013843128266,
+      "inertia": 155217.9799790416
+    }
+  ]
+}

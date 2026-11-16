@@ -1,0 +1,22 @@
+{
+  "cluster_names": {
+    "0": "Happy / High Energy",
+    "1": "Melancholic / Low Energy",
+    "2": "Happy / High Energy",
+    "3": "Intense / Dark",
+    "4": "Melancholic / Low Energy",
+    "5": "Melancholic / Low Energy"
+  },
+  "feature_cols": [
+    "danceability",
+    "energy",
+    "loudness",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence",
+    "tempo",
+    "duration_ms"
+  ]
+}
